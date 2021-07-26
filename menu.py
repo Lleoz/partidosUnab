@@ -1,11 +1,11 @@
 def menu():
-    print("Bienvenido al menú de partidos del equipo de futbol UNAB")
+    print("Bienvenido al menú de partidos del equipo de futbol UNAB.")
     print("¿Qué desea realizar?")
     print("1. Registrar partido")
     print("2. Ver resultados")
     print("3. Tabla de clasificación")
     print("4. Salir")
-    opc = int(input("digite su opción: "))
+    opc = int(input("Digite su opción: "))
     if opc == 1:
         registrar_partido(partidos)
     elif opc == 2:
@@ -16,7 +16,7 @@ def menu():
         print("adios")
         exit(1)
     else:
-        print("Opción no valida")
+        print("Opción no valida, intente de nuevo")
         menu()
 
 def validar_goles(goles):
@@ -26,35 +26,38 @@ def validar_goles(goles):
     return goles
 
 def definir_fecha():
-    print("vamos a registrar la fecha")
+    print("Vamos a registrar la fecha!")
     anio = int(input("Ingrese el año en formato AAAA: "))
     while(anio < 0 or anio > 2021):
         anio = int(input("Año incorrecto, ingrese el año en formato AAAA: "))
     mes = int(input("Ingrese el mes en formato MM: "))
     while(mes <= 0 or mes > 12):
         mes = int(input("Mes incorrecto, ingrese el mes en formato MM: "))
-    dia = int(input("Ingrese el dia en formato DD: "))
-    if(mes == 2):
-        while(dia <= 0 or dia > 28):
-            dia = int(input("dia erroneo, ingrese el dia en formato DD: "))
+    dia = int(input("Ingrese el día en formato DD: "))
+    if (mes == 2):
+        if (dia == 29):
+            while not (anio % 4 == 0 and (not (anio % 100 == 0) or anio % 400 == 0)):
+                dia = int(input("Día erróneo, ingrese el día en formato DD: "))
+        while (dia <= 0 or dia > 29):
+            dia = int(input("Día erróneo, ingrese el día en formato DD: "))
     if(mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12):
         while(dia <= 0 or dia > 31):
-            dia = int(input("dia erroneo, ingrese el dia en formato DD: "))
+            dia = int(input("Día erróneo, ingrese el día en formato DD: "))
     if(mes == 4 or mes == 6 or mes == 9 or mes == 11):
-        while(dia <= 0 or dia > 31):
-            dia = int(input("dia erroneo, ingrese el dia en formato DD: "))
+        while(dia <= 0 or dia > 30):
+            dia = int(input("Día erroneo, ingrese el día en formato DD: "))
     return dia, mes, anio
 
 def registrar_partido(partidos):
-    print("Vamos a registrar un partido")
+    print("Vamos a registrar un partido!")
     try:
         dia, mes, anio = definir_fecha()
-        print("ingrese la nombre del equipo rival: ")
+        print("Ingrese el nombre del equipo rival: ")
         nombre_rival = input()
-        print("ingrese la cantidad de goles hechos por el rival: ")
+        print("Ingrese la cantidad de goles hechos por el rival: ")
         goles_rival = int(input())
         goles_rival = validar_goles(goles_rival)
-        print("ingrese la cantidad de goles hechos por UNAB: ")
+        print("Ingrese la cantidad de goles hechos por UNAB: ")
         goles_unab = int(input())
         goles_unab= validar_goles(goles_unab)
         partidos.append([dia, mes, anio, nombre_rival, goles_rival, goles_unab])
