@@ -121,7 +121,7 @@ def registrar_partido(partidos):
 
 
 
-#ESTADISTICA GOLES---------------------------------------------------------
+#ESTADISTICAs---------------------------------------------------------------
 def estadisticas(partidos):
     suma_local=0
     suma_visitante=0
@@ -161,8 +161,7 @@ def estadisticas(partidos):
             estadisticas(partidos)
         else:
             estadisticas(partidos)
-
-    #######################################################################################################################################################################
+    #ACA EMPIEZA LA ESTADISTICA POR EQUIPOS        
     elif opc2==2:
         pass
     elif opc2==3:
@@ -247,6 +246,22 @@ def estadisticas(partidos):
             devs=math.sqrt(cuenta/part)
             print("La desviación estandar por partidos para el equipo: "+ str(team) +"es: "+ str(devs))
         estadisticas(partidos)
+    elif opc4==5:
+        ganados=0
+        perdidos=0
+        empatados=0
+        for i in partidos:
+            if i[3]==team:
+                if i[6]<i[5]:
+                    ganados=ganados+1
+                elif i[6]>i[5]:
+                    perdidos=perdidos+1
+                elif i[6]==i[5]:
+                    empatados=empatados+1
+                print("Partidos ganados: "+ str(ganados))
+                print("Partidos perdidos: "+ str(perdidos))
+                print("Partidos empatados: "+str(empatados)) 
+                menu()
     else:
         print("seleccion no válida")
         estadisticas(partidos)
