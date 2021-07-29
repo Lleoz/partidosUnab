@@ -32,6 +32,8 @@ def menu():
 
 # REGISTRAR EQUIPOS---------------------------------------------------------
 def registrar_equipos(equipos):
+    print("Estos son los equipos ya registrados:")
+    print(equipos)
     print("Ingrese el número de equipos que quiere registrar")
     nom = int(input())
     print("Ingrese el nombre de los equipos que desee inscribir")
@@ -82,6 +84,8 @@ def registrar_partido(partidos):
     print("Vamos a registrar un partido")
     try:
         dia, mes, anio = definir_fecha()
+        print("Estos son los equipos ya registrados:")
+        print(equipos)
         print("Ingrese el nombre del equipo local: ")
         nombre_local = input()
         if nombre_local in equipos:
@@ -163,7 +167,9 @@ def estadisticas(partidos):
     else:
         print("Opción inexistente")
         estadisticas(partidos)
-    print("Seleccione al equipo que quiere consultar")
+    print("Estos son los equipos ya registrados:")
+    print(equipos)
+    print("Ingrese al equipo que quiere consultar")
     team = str(input())
     if team in equipos:
         pass
